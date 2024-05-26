@@ -7,7 +7,7 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class RandomNumGenerator {
     static List<Integer> randomNum = new ArrayList<>();
-
+    static boolean[] flag = new boolean[10];
     static public List<Integer> generateRandomNum(){
         while(randomNum.size()<3){
             int newRandomNum = pickNumberInRange(1,9);
@@ -19,11 +19,10 @@ public class RandomNumGenerator {
     }
 
     static public boolean checkDuplication(int checkNum){
-        for(int i=0;i<randomNum.size();i++){
-            if(randomNum.get(i)==checkNum){
-                return true;
-            }
+        if(!flag[checkNum]){
+            flag[checkNum] = true;
+            return false;
         }
-        return false;
+        return true;
     }
 }
